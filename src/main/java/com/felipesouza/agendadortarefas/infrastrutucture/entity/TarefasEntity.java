@@ -1,6 +1,5 @@
 package com.felipesouza.agendadortarefas.infrastrutucture.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.felipesouza.agendadortarefas.infrastrutucture.enums.StatusNotificacaoEnum;
 import lombok.*;
 import org.springframework.data.annotation.Id;
