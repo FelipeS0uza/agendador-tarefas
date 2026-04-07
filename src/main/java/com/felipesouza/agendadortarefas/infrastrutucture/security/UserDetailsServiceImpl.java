@@ -1,3 +1,6 @@
+/*Foi excluido o metodo loadUserByUsername pois como se trata de uma interface, não é possivel alterar o código
+  Então foi criado o metodo carregaDadosUsuario, pois é preciso passar como parâmetro o email e o token*/
+
 package com.felipesouza.agendadortarefas.infrastrutucture.security;
 
 import com.felipesouza.agendadortarefas.business.dto.UsuarioDTO;
@@ -10,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailsServiceImpl {
 
-    @Autowired
+    @Autowired //Injeção de dependencias
     private UsuarioClient client;
 
     public UserDetails carregaDadosUsuario(String email, String token) {
