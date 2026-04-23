@@ -48,8 +48,10 @@ public class TarefasService {
 
     //Metodo para buscar as tarefas por periodo
     public List<TarefasDTO> buscarTarefasAgendadasPorPeriodo(LocalDateTime dataInicial, LocalDateTime dataFinal) {
-        //Busca as tarefas dentro do periodo recebido no parametro e o retorno é convertido para DTO
-        return tarefaConverter.paraListaTarefasDTO(tarefasRepository.findByDataAgendamentoBetween(dataInicial, dataFinal));
+        //Busca as tarefas dentro do periodo recebido no parametro e com status PENDENTE e o retorno é convertido para DTO
+        return tarefaConverter.paraListaTarefasDTO(
+                tarefasRepository.findByDataAgendamentoBetweenAndStatusNotificacaoEnum(dataInicial, dataFinal,
+                                                                                        StatusNotificacaoEnum.PENDENTE));
     }
 
     //Metodo que busca as tarefas pelo email do usuario autenticado
