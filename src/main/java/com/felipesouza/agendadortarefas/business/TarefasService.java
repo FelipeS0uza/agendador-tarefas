@@ -81,8 +81,9 @@ public class TarefasService {
             TarefasEntity entity = tarefasRepository.findById(id).orElseThrow(() ->
                     new ResourceNotFoundException("Tarefa não encontrada " + id));
 
-            //Seta o novo status passado como parametro
+            //Seta o novo status passado como parametro e data de alteração
             entity.setStatusNotificacaoEnum(status);
+            entity.setDataAlteracao(LocalDateTime.now());
 
             //Salva o novo status no BD e o retorno é convertido para DTO
             return tarefaConverter.paraTarefaDTO(tarefasRepository.save(entity));
@@ -98,6 +99,8 @@ public class TarefasService {
             //Procura a tarefa no BD e caso não exista lança uma erro
             TarefasEntity entity = tarefasRepository.findById(id).orElseThrow(() ->
                     new ResourceNotFoundException("Tarefa não encontrada " + id));
+
+            entity.setDataAlteracao(LocalDateTime.now());
 
             //O objeto entity será atualizado com os novos valores passado no DTO, por isso não pegamos o retorno
             tarefaUpdateConverter.updateTarefas(dto, entity);
