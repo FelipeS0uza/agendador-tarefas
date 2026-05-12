@@ -4,6 +4,7 @@
 package com.felipesouza.agendadortarefas.infrastrutucture.repository;
 
 import com.felipesouza.agendadortarefas.infrastrutucture.entity.TarefasEntity;
+import com.felipesouza.agendadortarefas.infrastrutucture.enums.StatusNotificacaoEnum;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +15,10 @@ import java.util.List;
 public interface TarefasRepository extends MongoRepository<TarefasEntity, String> {
 
     //Metodo que procura as tarefas pela data de agendamento entre um periodo específico, recebendo data inicial e final
-    List<TarefasEntity> findByDataAgendamentoBetween(LocalDateTime dataInicial, LocalDateTime dataFinal);
+    //E que esteja com o status específico
+    List<TarefasEntity> findByDataAgendamentoBetweenAndStatusNotificacaoEnum(LocalDateTime dataInicial,
+                                                                             LocalDateTime dataFinal,
+                                                                             StatusNotificacaoEnum status);
 
     //Metodo que procura as tarefas pelo email
     List<TarefasEntity> findByEmailUsuario(String email);
