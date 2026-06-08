@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor //  Cria o construtor recebendo todos os argumentos
 @NoArgsConstructor  //Cria o construtor não recebendo nenhum argumento
 @Builder    //Simplifica a instância de classes fornecendo os parâmetros na ordem desejada e de uma só vez.
-public class UsuarioDTO {
+public class LoginUsuarioDTO {
 
     private String email;
     private String senha;
